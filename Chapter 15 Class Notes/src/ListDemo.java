@@ -24,9 +24,9 @@ public class ListDemo
          */
         ListIterator<String> iterator = staff.listIterator(); // |DHRT
         
-        /* The next mathod advances the iterator to the next element in the list */
+        /* The next method advances the iterator to the next element in the list */
         iterator.next(); // D|HRT
-        /* The next mathod also returns the element that the iterator is passing. */
+        /* The next method also returns the element that the iterator is passing. */
         String name = iterator.next(); // DH|RT
         System.out.println(name);
         System.out.print("Expected: Harry\n");

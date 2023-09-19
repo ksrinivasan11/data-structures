@@ -13,10 +13,10 @@ public class ListUtil
     */
     public static void reverse(LinkedList<String> strings)
     {   
-        
+   /* This code with iterators does not work     
         //ListIterator<String> iterator1 = strings.listIterator();
         //ListIterator<String> iterator2 = strings.listIterator(strings.size()-1);
-/*
+
         for (int i = 0; i < strings.size()/2; i++) {
             
             String str1 = iterator1.next();
@@ -40,6 +40,7 @@ public class ListUtil
         }
         */
 
+        // working code with for loop and LinkedList methods
         for (int i = strings.size()-1; i > -1; i--){
             
             String str = strings.get(i);
@@ -47,9 +48,5 @@ public class ListUtil
             strings.addLast(str);
         }
 
-        // 1234
-        // 1243
-        // i = 2
-        //
     }
 }

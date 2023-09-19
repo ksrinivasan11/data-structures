@@ -14,9 +14,9 @@ public class ListUtil
     public static void reverse(LinkedList<String> strings)
     {   
         
-        ListIterator<String> iterator1 = strings.listIterator();
-        ListIterator<String> iterator2 = strings.listIterator(strings.size());
-
+        //ListIterator<String> iterator1 = strings.listIterator();
+        ListIterator<String> iterator2 = strings.listIterator(strings.size()-1);
+/*
         for (int i = 0; i < strings.size()/2; i++) {
             
             String str1 = iterator1.next();
@@ -29,8 +29,27 @@ public class ListUtil
             
             System.out.println(strings);
         }
-        
-        
-        
+      
+        int k = strings.size();
+        while (k > 1){
+            if (iterator2.hasPrevious())
+                iterator2.previous();
+            
+            
+
+        }
+        */
+
+        for (int i = strings.size()-1; i > 0; i--){
+            
+            String str = strings.get(i);
+            strings.remove(i);
+            strings.addLast(str);
+        }
+
+        // |1234
+        // 1|234 -> 
+        //
+        //
     }
 }

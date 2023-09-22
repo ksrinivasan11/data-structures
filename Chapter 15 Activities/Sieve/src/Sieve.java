@@ -30,7 +30,7 @@ public class Sieve
                 
                 if (setNum1 % setNum2 != 0){
                     count++;
-                    System.out.println(setNum1 + "/" + setNum2 + ": " + count);
+                    //System.out.println(setNum1 + "/" + setNum2 + ": " + count);
                 }
             }
             if (count == set.size()-1){

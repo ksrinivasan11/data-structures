@@ -27,7 +27,7 @@ public class FirstLetterMap
 
                 // Update the map here
                 // Use the Java 8 merge method
-                . . .
+                
 
             }
 

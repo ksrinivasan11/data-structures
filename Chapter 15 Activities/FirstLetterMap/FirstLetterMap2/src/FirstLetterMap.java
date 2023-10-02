@@ -24,7 +24,12 @@ public class FirstLetterMap
             {
                 String word = clean(in.next());
                 Character c = word.charAt(0);
+                if (tempTree == null){
+                    tempTree = new TreeSet
+                }
 
+                tempTree.add(word)
+                words.put(c, tempTree?)
                 // Update the map here
                 // Modify Worked Example 15.1
                 . . .

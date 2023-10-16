@@ -73,27 +73,48 @@ public class LinkedList
 
 
     //Class Node
+    // Node is static because it does NOT need access to anything in LinkedList
     static class Node { // inner class
         public Object data;
         public Node next;
     }
 
-    class LinkedListIterator //implements ListIterator
+    class LinkedListIterator implements ListIterator
     {
-      //private data
+        //private data
+        private Node position;
+        private Node previous;
+        private boolean isAfterNext;
 
 
         /**
             Constructs an iterator that points to the front
             of the linked list.
         */
-
+        public LinkedListIterator() {
+            position = null;
+            previous = null;
+            isAfterNext = false;
+        }
 
         /**
             Moves the iterator past the next element.
             @return the traversed element
         */
+        public Object next(){
+            previous = position;
+            isAfterNext = true;
 
+            // The position is null when the iterator is first created
+            if (position == null) {
+                position = first;
+            }
+            else {
+                position = position.next;
+            }
+
+            return position.data;
+        }
 
 
 

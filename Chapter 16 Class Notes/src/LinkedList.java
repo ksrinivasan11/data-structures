@@ -29,22 +29,23 @@ public class LinkedList
     public Object getFirst() {
         if  (this.first == null) {
             throw new NoSuchElementException();
-        }                   
+        }
+        return this.first.data;                   
     }
 
     /**
         Removes the first element in the linked list.
         @return the removed element
     */
-        public Object removeFirst() {
-            if (this.first == null) {
-                throw new NoSuchElementException();
-            }
-
-            Object element = this.first.data;
-            this.first = this.first.next;
-            return element;
+    public Object removeFirst() {
+        if (this.first == null) {
+            throw new NoSuchElementException();
         }
+
+        Object element = this.first.data;
+        this.first = this.first.next;
+        return element;
+    }
 
 
 
@@ -54,12 +55,12 @@ public class LinkedList
         @param element the element to add
     */
 
-        public void addfirst(Object element) {
-            Node newNode = new Node();
-            newNode.data = element;
-            newNode.next = this.first;
-            this.first = newNode;
-        }
+    public void addFirst(Object element) {
+        Node newNode = new Node();
+        newNode.data = element;
+        newNode.next = this.first;
+        this.first = newNode;
+    }
 
 
 
@@ -67,7 +68,9 @@ public class LinkedList
         Returns an iterator for iterating through this list.
         @return an iterator for iterating through this list
     */
-
+    public ListIterator listIterator() {
+        return new LinkedListIterator();
+    }
 
 
 
@@ -102,6 +105,10 @@ public class LinkedList
             @return the traversed element
         */
         public Object next(){
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            
             previous = position;
             isAfterNext = true;
 
@@ -117,20 +124,38 @@ public class LinkedList
         }
 
 
-
-
         /**
             Tests if there is an element after the iterator position.
             @return true if there is an element after the iterator position
         */
-
+        public boolean hasNext(){
+            if (position == null){
+                return first != null;
+            }
+            return position.next != null;
+        }
 
         /**
             Adds an element before the iterator position
             and moves the iterator past the inserted element.
             @param element the element to add
         */
+        public void add(Object element) {
+            // Check if the iterator is at the start of the list
+            if (position == null) { // previous doesn't work because once you call add again, previous is still null (position is like -1 and previous is like -2 when at beginning of list)
+                addFirst(element);
+                position = first; 
+            }
+            else {
+                Node newNode = new Node();
+                newNode.data = element;
+                newNode.next = position.next;
+                position.next = newNode;
+                position = newNode;
+            }
 
+            isAfterNext = false;
+        }
 
 
 
@@ -140,7 +165,22 @@ public class LinkedList
             Removes the last traversed element. This method may
             only be called after a call to the next() method.
         */
+        public void remove() {
+            if (!isAfterNext){
+                throw new IllegalStateException();
+            }
 
+            if (position == first){
+                removeFirst();
+                position = null;
+            }
+            else {
+                previous.next = position.next;
+                position = previous;
+            }
+            isAfterNext = false;
+
+        }
 
 
 
@@ -151,9 +191,16 @@ public class LinkedList
             Sets the last traversed element to a different value.
             @param element the element to set
         */
+        public void set(Object element){
+            if (!isAfterNext){
+                throw new IllegalStateException();
+            }
+            position.data = element;
+        }
 
 
-
-
+        public String toString(){
+            return "";
+        }
     }//LinkedListIterator
 }//LinkedList

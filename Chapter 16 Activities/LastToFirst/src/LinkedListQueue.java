@@ -23,11 +23,20 @@ public class LinkedListQueue
     public void lastToFirst()
     {
         
+        Node newNode = new Node();
+        newNode.data = tail.data;
+        newNode.next = head;
+        head = newNode;
+
+
+        //Object element = tail.data;
+        Node newNode2 = new Node();
+        newNode2 = head;
+        while (newNode2.next != tail){
+            newNode2 = newNode2.next;
+        }
         
-        
-        
-        
-        
+        tail = newNode2;
 
 
 

@@ -19,7 +19,7 @@ public class TreeNode
     left = initLeft;
     right = initRight;
   }
-
+  
   // Methods:
 
   public Object getValue() { return value; }

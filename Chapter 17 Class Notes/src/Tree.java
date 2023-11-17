@@ -1,4 +1,5 @@
 import java.util.List;
+import java.beans.Visibility;
 import java.util.ArrayList;
 
 /**
@@ -56,4 +57,20 @@ public class Tree
     }
 
     // Additional methods will be added in later sections.
+
+    /*
+     * A visitor whose visit method is called for each visited node
+     * during a tree traversal
+     */
+    public interface visitor {
+        // The visit method id called for each visited node
+        //@param dataa: the data of the node being visited
+        void visit(Object data);
+
+        /*tranverse this tree in preorder
+         * @param v: the visitor to be invoked at each node
+         */
+        public void preorder(Visitor v){}
+    privated static void preorder(Node n)}
+
 }

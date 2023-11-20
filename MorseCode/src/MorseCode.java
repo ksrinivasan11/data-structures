@@ -89,9 +89,11 @@ public class MorseCode
         TreeNode right = decodeTree.getRight();
 
         for (int i = 0; i < code.length(); i++){
+            String current = code.substring(0, 1);
             
-        }
-        decodeTree
+            
+        }   
+        
     }
 
     /**

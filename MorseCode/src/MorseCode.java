@@ -85,21 +85,21 @@ public class MorseCode
      */
     private static void treeInsert(char letter, String code)
     {
-        TreeNode left = decodeTree.getLeft();
-        TreeNode right = decodeTree.getRight();
+        TreeNode curNode = decodeTree;
+        
 
         for (int i = 0; i < code.length(); i++){
             Char current = code.charAt(i);
             if (current == DOT){
-                if(root.getLeft() == null)
-                    root.setLeft(new TreeNode(null));
-                root = root.getLeft(); } 
+                if(curNode.getLeft() == null)
+                    curNode.setLeft(new TreeNode(null));
+                curNode = curNode.getLeft(); } 
             if (current == DASH) {
-                if(root.getRight() == null)
-                    root.setRight(new TreeNode(null));
-                root = root.getRight(); }
+                if(curNode.getRight() == null)
+                    curNode.setRight(new TreeNode(null));
+                curNode = curNode.getRight(); }
             }
-            root.setValue(letter);
+            curNode.setValue(letter);
         }   
         
 
@@ -116,7 +116,7 @@ public class MorseCode
 
         text = text.toUpperCase();
         for (int i = 0; i < text.length(); i++){
-            if (text.charAt(count) == ' '){
+            if (text.charAt(i) == ' '){
                 morse.append(" "); }
 
             code = codeMap.get(text.charAt(count)) + " "
@@ -140,10 +140,22 @@ public class MorseCode
     {
         StringBuffer text = new StringBuffer(100);
 
-        /*
-            !!! INSERT CODE HERE
-        */
+        tempDec = decodeTree;
+        
+        for (int i = 0; i < text.length(); i++){
+            if (text.charAt(i) == ' '){
+                morse.append(" "); }
 
+            if (ch == DOT){
+                if (tempDec.getLeft() != null)
+                    tempDec = tempDec.getLeft(); }
+            if (ch == DASH){
+                if (tempDec.getRight() != null)
+                    tempDec = tempDec.getRight(); }
+            else{
+                text.append(tempDec.getValue();
+                tempDec = decodeTree}
+            
         return text.toString();
     }
 }

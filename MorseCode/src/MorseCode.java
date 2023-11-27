@@ -89,12 +89,19 @@ public class MorseCode
         TreeNode right = decodeTree.getRight();
 
         for (int i = 0; i < code.length(); i++){
-            String current = code.substring(0, 1);
-            
-            
+            Char current = code.charAt(i);
+            if (current == DOT){
+                if(root.getLeft() == null)
+                    root.setLeft(new TreeNode(null));
+                root = root.getLeft(); } 
+            if (current == DASH) {
+                if(root.getRight() == null)
+                    root.setRight(new TreeNode(null));
+                root = root.getRight(); }
+            }
+            root.setValue(letter);
         }   
         
-    }
 
     /**
      * Converts text into a Morse code message.  Adds a space after a dot-dash
@@ -106,10 +113,20 @@ public class MorseCode
     {
         StringBuffer morse = new StringBuffer(400);
 
-        /*
-            !!! INSERT CODE HERE
-        */
 
+        text = text.toUpperCase();
+        for (int i = 0; i < text.length(); i++){
+            if (text.charAt(count) == ' '){
+                morse.append(" "); }
+
+            code = codeMap.get(text.charAt(count)) + " "
+
+            if (code == null)
+                code = " ";
+
+            morse.append(code); }
+                
+                
         return morse.toString();
     }
 

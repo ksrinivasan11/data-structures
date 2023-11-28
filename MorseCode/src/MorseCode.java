@@ -141,7 +141,7 @@ public class MorseCode
         TreeNode tempDec = decodeTree;
         
         char tempCh = morse.charAt(0);
-        /*
+        
         for (int i = 0; i < morse.length(); i++){
             tempCh = morse.charAt(i);
             
@@ -154,9 +154,11 @@ public class MorseCode
                 tempDec = tempDec.getRight(); }
             else{
                 text.append(tempDec.getValue());
-                tempDec = decodeTree;}
-                }
-                
+                tempDec = decodeTree;
+            }
+                }return text.toString(); }
+        
+        /*
         int cnt = 0;
         while (cnt < morse.length()){    // -... .-. ..- ....
             tempCh = morse.charAt(cnt);
@@ -172,35 +174,7 @@ public class MorseCode
                 tempDec = decodeTree;}
                 }
 
-        */
-
-            if (tempCh == ' '){
-                return " "; }
-            if (tempCh == DOT){
-                tempDec = tempDec.getLeft();
-                 }
-            if (tempCh == DASH){
-                tempDec = tempDec.getRight(); }
-
-            text.append(decode(morse.substring(1), tempDec));
-        return text.toString();
-    }   
-    public static String decode(String morse, TreeNode tempDec)
-    {
-        char tempCh = morse.charAt(0);
-        if (tempCh == ' '){
-            return " ";
-            tempDec = decodeTree; }
-        if (tempCh == DOT){
-            tempDec = tempDec.getLeft();
-            }
-        if (tempCh == DASH){
-            tempDec = tempDec.getRight(); }
-        else {
-            return (String) tempDec.getValue(); }
-
-        return decode(morse.substring(1), tempDec);
-                }
+            */
 /**
  * BTreePrinter class courtesy of Karen Ge (@karenge1)
  */
@@ -290,5 +264,33 @@ class BTreePrinter {
         return true;
     }
 }
-}
+    }
 
+/*if (tempCh == ' '){
+                return " "; }
+            if (tempCh == DOT){
+                tempDec = tempDec.getLeft();
+                 }
+            if (tempCh == DASH){
+                tempDec = tempDec.getRight(); }
+
+            text.append(decode(morse.substring(1), tempDec));
+        return text.toString();
+    }   
+    public static String decode(String morse, TreeNode tempDec)
+    {
+        char tempCh = morse.charAt(0);
+        if (tempCh == ' '){
+            tempDec = decodeTree;
+            return " ";
+             }
+        if (tempCh == DOT){
+            tempDec = tempDec.getLeft();
+            }
+        if (tempCh == DASH){
+            tempDec = tempDec.getRight(); }
+        else {
+            return tempDec.getValue(); }
+
+        return decode(morse.substring(1), tempDec);
+                } */

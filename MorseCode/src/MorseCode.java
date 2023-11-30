@@ -142,6 +142,21 @@ public class MorseCode
         char tempCh;
         
         int count = 0;
+        
+        for (int i; i<morse.length(); i++){
+            if (morse.charAt(i) == ' ')
+                count++;
+        }
+        
+        String tempString = 
+        for (int i; i<count; i++){
+            int j = 0;
+            while (morse.charAt(i)){
+            
+        }
+        }
+
+        /* 
         if (morse.contains(" ")){
         while (count < morse.length()){
             
@@ -188,7 +203,7 @@ public class MorseCode
         }
         return text.toString();}
         
-        /*
+        
         int cnt = 0;
         while (cnt < morse.length()){    // -... .-. ..- ....
             tempCh = morse.charAt(cnt);

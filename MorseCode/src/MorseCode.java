@@ -141,20 +141,40 @@ public class MorseCode
         TreeNode tempDec = decodeTree;
         char tempCh;
         
-        int count = 0;
+        int spaceCount = 0;
         
-        for (int i; i<morse.length(); i++){
+        for (int i = 0; i<morse.length(); i++){
             if (morse.charAt(i) == ' ')
-                count++;
+                spaceCount++;
         }
         
-        String tempString = 
-        for (int i; i<count; i++){
-            int j = 0;
-            while (morse.charAt(i)){
+        
+        for (int i = 0; i < spaceCount; i++){
             
+            String tempString;
+            if (morse.indexOf(" ") == -1){
+                tempString = morse.substring(0);
+                }
+            else{
+                tempString = morse.substring(0, morse.indexOf(" "));
+                morse = morse.substring(morse.indexOf(" ")); }
+            
+            
+            
+            int count = 0;
+            while (count < tempString.length()){
+            
+            tempCh = tempString.charAt(count);
+                if (tempCh == DOT){
+                tempDec = tempDec.getLeft(); }
+            if (tempCh == DASH){
+                tempDec = tempDec.getRight(); }
+            count++;
+            }
+            text.append(tempDec.getValue());
+            tempDec = decodeTree;
         }
-        }
+             return text.toString();}
 
         /* 
         if (morse.contains(" ")){
@@ -308,8 +328,8 @@ class BTreePrinter {
 
         return true;
     }
-}
-    }
+}}
+
 
 /*if (tempCh == ' '){
                 return " "; }

@@ -147,6 +147,7 @@ public class MorseCode
             if (morse.charAt(i) == ' ')
                 spaceCount++;
         }
+        //System.out.println(spaceCount);
         
         
         for (int i = 0; i < spaceCount; i++){
@@ -156,16 +157,18 @@ public class MorseCode
                 tempString = morse.substring(0);
                 }
             else{
-                tempString = morse.substring(0, morse.indexOf(" "));
-                morse = morse.substring(morse.indexOf(" ")); }
-            
+                tempString = morse.substring(0, morse.indexOf(" ")+1);
+                morse = morse.substring(morse.indexOf(" ")+1, morse.length());
+                System.out.println(tempString); }
+                System.out.println(morse);
+                
             
             
             int count = 0;
             while (count < tempString.length()){
             
             tempCh = tempString.charAt(count);
-                if (tempCh == DOT){
+            if (tempCh == DOT){
                 tempDec = tempDec.getLeft(); }
             if (tempCh == DASH){
                 tempDec = tempDec.getRight(); }
